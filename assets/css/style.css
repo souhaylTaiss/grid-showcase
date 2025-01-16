@@ -5,7 +5,7 @@
  * @version [1.0.0 version]
  * @date [15/01/2025]
  * 
- * @description
+ * @descriptionv
  * This stylesheet includes the styles for the various components and elements using grid layout.
  */
 
@@ -20,143 +20,126 @@
 body {
   font-family: "Roboto", sans-serif;
   background-color: #09011b;
-  color: #333;
-  line-height: 1.6;
 }
 
+/* Container */
 .container {
-  width: fit-content;
+  width: 90%;
   height: 650px;
   margin: 20px auto;
   display: grid;
   grid-template-columns: repeat(12, minmax(100px, 1fr));
   grid-template-rows: repeat(12, 1fr);
-  transition: .5s;
   position: relative;
-  position: relative;
-  background-image: url(../images/hot-air-balloons-6757939.jpg);
-  background-size:cover ;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  overflow: hidden;
 }
-  .container  div {
-    mix-blend-mode: darken;
-    border: 4px solid #09011b;
-  }
-.container div:hover  {
-  background-position: 100px;
+
+.container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 0.5s;
 }
-.container  div:nth-child(1) {
+
+.container > div {
+  font-size: 80%;
+  color: white;
+  border: 7px solid #09011b;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: end;
+  padding: 5px;
+  line-height: 1.4;
+  overflow: hidden;
+}
+.container > div:hover {
+  background-image: linear-gradient(0deg, black, transparent);
+}
+.container div div {
+  transform: translateY(100%);
+  transition: 0.3s;
+}
+.container > div:hover div {
+  transform: translateY(0);
+}
+
+.container div:hover ~ img {
+  transform: translate(10px, 4px) scale(1.2);
+}
+
+.container div:nth-of-type(1) {
   grid-row: span 5;
 }
-.container  div:nth-child(2) {
+
+.container div:nth-of-type(2),
+.container div:nth-of-type(13),
+.container div:nth-of-type(32) {
   grid-column: span 2;
 }
-.container  div:nth-child(3) {
-  grid-column: span 2;
-  grid-row: span 2;
+
+.container div:nth-of-type(3),
+.container div:nth-of-type(6),
+.container div:nth-of-type(18),
+.container div:nth-of-type(23),
+.container div:nth-of-type(25) {
+  grid-area: span 2 / span 2;
 }
-.container  div:nth-child(5) {
+
+.container div:nth-of-type(5),
+.container div:nth-of-type(19),
+.container div:nth-of-type(33) {
   grid-row: span 3;
 }
-.container  div:nth-child(6) {
-  grid-column: span 2;
-  grid-row: span 2;
+
+.container div:nth-of-type(7) {
+  grid-area: span 4 / span 3;
 }
-.container  div:nth-child(7) {
-  grid-column: span 3;
-  grid-row: span 4;
+
+.container div:nth-of-type(12),
+.container div:nth-of-type(27) {
+  grid-area: span 2 / span 3;
 }
-.container  div:nth-child(8) {
-  grid-column: span;
-  grid-row: span;
+
+.container div:nth-of-type(20) {
+  grid-area: span 5 / span 2;
 }
-.container  div:nth-child(9) {
-  grid-row: span 2;
-}
-.container  div:nth-child(11) {
-  grid-row: span 2;
-}
-.container  div:nth-child(12) {
-  grid-column: span 3;
-  grid-row: span 2;
-}
-.container  div:nth-child(13) {
-  grid-column: span 2;
-}
-.container  div:nth-child(14) {
-  grid-row: span;
-}
-.container  div:nth-child(15) {
-  grid-row: span 2;
-}
-.container  div:nth-child(16) {
-  grid-row: span 2;
-}
-.container  div:nth-child(18) {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-.container  div:nth-child(19) {
-  grid-row: span 3;
-}
-.container  div:nth-child(20) {
-  grid-column: span 2;
-  grid-row: span 5;
-}
-.container  div:nth-child(21) {
+
+.container div:nth-of-type(21) {
   grid-row: span 6;
 }
-.container  div:nth-child(23) {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-.container  div:nth-child(25) {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-.container  div:nth-child(27) {
-  grid-column: span 3;
-  grid-row: span 2;
-}
-.container  div:nth-child(28) {
+
+.container div:nth-of-type(28),
+.container div:nth-of-type(48) {
   grid-column: span 3;
 }
-.container  div:nth-child(31) {
-  grid-row: span 2;
-}
-.container  div:nth-child(32) {
-  grid-column: span 2;
-}
-.container  div:nth-child(33) {
-  grid-row: span 3;
-}
-.container  div:nth-child(34) {
-  grid-row: span 2;
-}
-.container  div:nth-child(35) {
+
+.container div:nth-of-type(35) {
   grid-row: span 4;
 }
-.container  div:nth-child(36) {
-  grid-column: span 2;
-  grid-row: span 3;
+
+.container div:nth-of-type(36),
+.container div:nth-of-type(38) {
+  grid-area: span 3 / span 2;
 }
-.container  div:nth-child(38) {
-  grid-column: span 2;
-  grid-row: span 3;
-}
-.container  div:nth-child(39) {
+
+.container div:where(:nth-of-type(39), :nth-of-type(42)) {
   grid-column: span 4;
 }
-.container  div:nth-child(41) {
+
+.container
+  :where(
+    :nth-of-type(9),
+    :nth-of-type(11),
+    :nth-of-type(15),
+    :nth-of-type(16),
+    :nth-of-type(31),
+    :nth-of-type(34),
+    :nth-of-type(41),
+    :nth-of-type(43)
+  ) {
   grid-row: span 2;
-}
-.container  div:nth-child(42) {
-  grid-column: span 4;
-}
-.container  div:nth-child(43) {
-  grid-row: span 2;
-}
-.container  div:nth-child(48) {
-  grid-column: span 3;
 }
