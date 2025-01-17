@@ -22,8 +22,6 @@ body {
   background-color: #09011b;
 }
 
-
-
 .popup-overlay {
   position: fixed;
   left: 0;
@@ -100,9 +98,6 @@ body {
   cursor: pointer;
 }
 
-
-
-
 /* Container */
 .container {
   width: 90%;
@@ -150,10 +145,10 @@ body {
 }
 
 .container div:nth-child(even):hover ~ img {
-  transform: translate(-10px, -10px) ;
+  transform: translate(-10px, -10px);
 }
 .container div:nth-child(odd):hover ~ img {
-  transform: translate(10px, 10px) ;
+  transform: translate(10px, 10px);
 }
 
 .container div:nth-of-type(1) {
