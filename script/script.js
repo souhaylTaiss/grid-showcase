@@ -30,56 +30,57 @@ container.appendChild(img);
 
 // Create a popup box show an image when a box is clicked
 const box = document.querySelectorAll(".container > div");
+const keyframe = document.createElement("style");
 
 box.forEach((div) => {
-  div.addEventListener("click", () => {
-    let overlay = document.createElement("div"),
-      popupBox = document.createElement("div"),
-      closeButton = document.createElement("img"),
-      popupImage = document.createElement("img");
+  div.addEventListener("click", overlayImage);
+});
 
-    overlay.className = "popup-overlay";
-    popupBox.className = "popup-box";
-    closeButton.className = "close-button";
-    popupImage.src = "./assets/images/hot-air-balloons-6757939.jpg";
-    closeButton.src = "./assets/images/clear.png";
-    document.body.append(overlay);
-    popupBox.append(closeButton);
-    popupBox.append(popupImage);
-    document.body.append(popupBox);
+function overlayImage() {
+  const overlay = document.createElement("div"),
+    popupBox = document.createElement("div"),
+    closeButton = document.createElement("img"),
+    popupImage = document.createElement("img");
 
-    setTimeout(() => {
-      popupBox.style.top = "50%";
-    }, 800);
+  overlay.className = "popup-overlay";
+  popupBox.className = "popup-box";
+  closeButton.className = "close-button";
+  popupImage.src = "./assets/images/hot-air-balloons-6757939.jpg";
+  closeButton.src = "./assets/images/clear.png";
+  document.body.append(overlay);
+  popupBox.append(closeButton);
+  popupBox.append(popupImage);
+  document.body.append(popupBox);
 
-    popupBox.addEventListener("transitionend", showImage);
-    closeButton.addEventListener("click", hideImage);
+  setTimeout(() => {
+    popupBox.style.top = "50%";
+  }, 800);
+  popupBox.addEventListener("transitionend", showImage);
 
-    function showImage() {
-      popupBox.classList.add("show");
-      popupBox.style.transform = "translate(-50%,-50%)";
-      closeButton.style.top = "-44px";
-      popupImage.style.opacity = 1;
-      setTimeout(() => {
-        popupBox.style.height = popupBox.clientHeight + "px";
-      }, 2000);
-      popupBox.removeEventListener("transitionend", showImage);
-    }
+  function showImage() {
+    popupBox.style.width = "700px";
+    popupBox.style.height = "auto";
+    popupBox.style.transform = "translate(-50%,-50%)";
+    closeButton.style.top = "-60px";
+    popupImage.style.opacity = 1;
+    popupBox.addEventListener("transitionend", () => {
+      popupBox.style.height = popupImage.scrollHeight + "px";
+    });
+    popupBox.removeEventListener("transitionend", showImage);
+  }
 
-    function hideImage() {
-      popupImage.style.opacity = 0;
-      popupBox.style.height = 44 + "px";
-      closeButton.style.top = "0";
-      popupBox.classList.remove("show");
-      popupBox.addEventListener("transitionend", removeImage);
-    }
-
-    function removeImage() {
+  closeButton.addEventListener("click", hideImage);
+  function hideImage() {
+    popupImage.style.opacity = 0;
+    popupBox.style.width = "40px";
+    popupBox.style.height = "40px";
+    closeButton.style.top = "0";
+    popupBox.addEventListener("transitionend", () => {
       popupBox.style.top = "-50%";
       setTimeout(() => {
         overlay.remove();
         popupBox.remove();
       }, 1000);
-    }
-  });
-});
+    });
+  }
+}

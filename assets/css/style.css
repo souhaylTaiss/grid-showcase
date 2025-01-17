@@ -40,7 +40,6 @@ body {
 .popup-box {
   width: 40px;
   height: 40px;
-  padding: 10px;
   position: fixed;
   top: 110%;
   left: 50%;
@@ -52,20 +51,16 @@ body {
   -o-transition: 0.4s;
   transition: 0.4s;
 }
-.popup-box.show {
-  width: 700px;
-  height: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
+
 .popup-box img:not(.close-button) {
   width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 10px;
   opacity: 0;
+  transition: 0.3s;
 }
+
 .popup-box::before {
   content: "";
   width: 100px;
