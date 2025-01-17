@@ -59,6 +59,7 @@ function overlayImage() {
 
   function showImage() {
     popupBox.style.width = "700px";
+    popupBox.style.maxWidth = "85%";
     popupBox.style.height = "auto";
     popupBox.style.transform = "translate(-50%,-50%)";
     closeButton.style.top = "-60px";
